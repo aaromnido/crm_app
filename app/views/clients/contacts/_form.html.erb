@@ -1,0 +1,41 @@
+<%= form_with(model: [client, contact], local: true, class: "row g-3") do |form| %>
+  <% if contact.errors.any? %>
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        <h4><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h4>
+        <ul class="mb-0">
+          <% contact.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :phone, class: "form-label" %>
+    <%= form.telephone_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :position, class: "form-label" %>
+    <%= form.text_field :position, class: "form-control" %>
+  </div>
+
+  <div class="col-12">
+    <div class="d-flex gap-2">
+      <%= form.submit class: "btn btn-primary" %>
+      <%= link_to 'Cancel', client_contacts_path(client), class: "btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>

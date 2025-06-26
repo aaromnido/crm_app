@@ -27,6 +27,36 @@
             <h6 class="text-muted">Notes</h6>
             <p><%= simple_format(@client.notes) %></p>
           <% end %>
+
+          <hr>
+          <h6 class="text-muted">Contacts</h6>
+          <% if @client.contacts.any? %>
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Position</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @client.contacts.each do |contact| %>
+                  <tr>
+                    <td><%= contact.name %></td>
+                    <td><%= contact.email %></td>
+                    <td><%= contact.phone %></td>
+                    <td><%= contact.position %></td>
+                    <td><%= link_to 'View', client_contact_path(@client, contact), class: 'btn btn-sm btn-outline-primary' %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <p>No contacts for this client yet.</p>
+          <% end %>
+          <%= link_to 'Add New Contact', new_client_contact_path(@client), class: 'btn btn-sm btn-success' %>
         </div>
       </div>
     </div>
