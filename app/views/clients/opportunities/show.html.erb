@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h1 class="h4 mb-0"><%= @opportunity.title %></h1>
+          <div>
+            <%= link_to 'Edit', edit_client_opportunity_path(@client, @opportunity), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Back', client_path(@client), class: 'btn btn-secondary btn-sm' %>
+          </div>
+        </div>
+        <div class="card-body">
+          <p><strong>Client:</strong> <%= @client.name %></p>
+          <p><strong>Description:</strong> <%= simple_format(@opportunity.description) %></p>
+          <p><strong>Value:</strong> <%= number_to_currency(@opportunity.value) %></p>
+          <p><strong>Status:</strong> <%= @opportunity.status %></p>
+          <p><strong>Close Date:</strong> <%= @opportunity.close_date %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -57,6 +57,36 @@
             <p>No contacts for this client yet.</p>
           <% end %>
           <%= link_to 'Add New Contact', new_client_contact_path(@client), class: 'btn btn-sm btn-success' %>
+
+          <hr>
+          <h6 class="text-muted">Opportunities</h6>
+          <% if @client.opportunities.any? %>
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Value</th>
+                  <th>Status</th>
+                  <th>Close Date</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @client.opportunities.each do |opportunity| %>
+                  <tr>
+                    <td><%= opportunity.title %></td>
+                    <td><%= number_to_currency(opportunity.value) %></td>
+                    <td><%= opportunity.status %></td>
+                    <td><%= opportunity.close_date %></td>
+                    <td><%= link_to 'View', client_opportunity_path(@client, opportunity), class: 'btn btn-sm btn-outline-primary' %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <p>No opportunities for this client yet.</p>
+          <% end %>
+          <%= link_to 'Add New Opportunity', new_client_opportunity_path(@client), class: 'btn btn-sm btn-success' %>
         </div>
       </div>
     </div>

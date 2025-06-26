@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2">Opportunities for <%= @client.name %></h1>
+    <%= link_to 'New Opportunity', new_client_opportunity_path(@client), class: 'btn btn-primary' %>
+  </div>
+
+  <% if @client.opportunities.any? %>
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Title</th>
+                <th>Value</th>
+                <th>Status</th>
+                <th>Close Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @client.opportunities.each do |opportunity| %>
+                <tr>
+                  <td><%= opportunity.title %></td>
+                  <td><%= number_to_currency(opportunity.value) %></td>
+                  <td><%= opportunity.status %></td>
+                  <td><%= opportunity.close_date %></td>
+                  <td>
+                    <%= link_to 'View', client_opportunity_path(@client, opportunity), class: 'btn btn-sm btn-outline-primary' %>
+                    <%= link_to 'Edit', edit_client_opportunity_path(@client, opportunity), class: 'btn btn-sm btn-outline-secondary' %>
+                    <%= link_to 'Delete', client_opportunity_path(@client, opportunity), method: :delete,
+                        confirm: 'Are you sure?',
+                        class: 'btn btn-sm btn-outline-danger' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">No opportunities yet!</h4>
+      <p>Start by creating your first opportunity for this client.</p>
+      <%= link_to 'Create First Opportunity', new_client_opportunity_path(@client), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

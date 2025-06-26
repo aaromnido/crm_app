@@ -46,7 +46,7 @@ Tasks (activities/to-dos)
 - Test CRUD operations
 
 ### Phase 2: Relationships & Navigation
-**Task 2.1:** Generate Contact model
+**Task 2.1:** Generate Contact model -> DONE
 - Create Contact model with client relationship
 - Generate controller and views
 - Implement nested routes (clients/:id/contacts)

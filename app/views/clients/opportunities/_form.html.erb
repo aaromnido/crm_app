@@ -1,0 +1,46 @@
+<%= form_with(model: [client, opportunity], local: true, class: "row g-3") do |form| %>
+  <% if opportunity.errors.any? %>
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        <h4><%= pluralize(opportunity.errors.count, "error") %> prohibited this opportunity from being saved:</h4>
+        <ul class="mb-0">
+          <% opportunity.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :value, class: "form-label" %>
+    <%= form.number_field :value, class: "form-control", step: 0.01 %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :status, class: "form-label" %>
+    <%= form.select :status, Clients::OpportunitiesController::OPPORTUNITY_STATUSES, { prompt: "Select Status" }, class: "form-select" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form.label :close_date, class: "form-label" %>
+    <%= form.date_field :close_date, class: "form-control" %>
+  </div>
+
+  <div class="col-12">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, rows: 4, class: "form-control" %>
+  </div>
+
+  <div class="col-12">
+    <div class="d-flex gap-2">
+      <%= form.submit class: "btn btn-primary" %>
+      <%= link_to 'Cancel', client_opportunities_path(client), class: "btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>
