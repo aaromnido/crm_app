@@ -39,7 +39,7 @@ Tasks (activities/to-dos)
 - Configure Bootstrap via CDN
 - Set up basic layout with navigation
 
-**Task 1.2:** Generate Client model and controller
+**Task 1.2:** Generate Client model and controller -> DONE
 - Create Client model with basic fields
 - Generate controller with index, show, new, create, edit, update, destroy
 - Create basic views with Bootstrap styling
