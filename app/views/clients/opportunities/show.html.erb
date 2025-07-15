@@ -15,6 +15,42 @@
           <p><strong>Value:</strong> <%= number_to_currency(@opportunity.value) %></p>
           <p><strong>Status:</strong> <%= @opportunity.status %></p>
           <p><strong>Close Date:</strong> <%= @opportunity.close_date %></p>
+
+          <hr>
+          <h6 class="text-muted">Tasks</h6>
+          <% if @opportunity.tasks.any? %>
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                  <th>Priority</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @opportunity.tasks.each do |task| %>
+                  <tr>
+                    <td><%= task.title %></td>
+                    <td><%= task.due_date %></td>
+                    <td><%= task.status %></td>
+                    <td><%= task.priority %></td>
+                    <td>
+                      <%= link_to 'View', client_task_path(@client, task), class: 'btn btn-sm btn-outline-primary' %>
+                      <%= link_to 'Edit', edit_client_task_path(@client, task), class: 'btn btn-sm btn-outline-secondary' %>
+                      <%= link_to 'Delete', client_task_path(@client, task), method: :delete,
+                          confirm: 'Are you sure?',
+                          class: 'btn btn-sm btn-outline-danger' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <p>No tasks for this opportunity yet.</p>
+          <% end %>
+          <%= link_to 'Add New Task', new_client_opportunity_task_path(@client, @opportunity), class: 'btn btn-sm btn-success' %>
         </div>
       </div>
     </div>

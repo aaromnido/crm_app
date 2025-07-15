@@ -52,14 +52,14 @@ Tasks (activities/to-dos)
 - Implement nested routes (clients/:id/contacts)
 - Add contacts section to client show page
 
-**Task 2.2:** Generate Opportunity model
+**Task 2.2:** Generate Opportunity model -> DONE
 - Create Opportunity model with client relationship
 - Generate controller and views
 - Add opportunities section to client show page
 - Implement status dropdown (Lead, Qualified, Proposal, Won, Lost)
 
 ### Phase 3: Advanced Relationships
-**Task 3.1:** Generate Task model
+**Task 3.1:** Generate Task model -> DONE
 - Create Task model with client and opportunity relationships
 - Generate controller and views
 - Implement priority levels (Low, Medium, High)

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :clients do
     resources :contacts, module: :clients
-    resources :opportunities, module: :clients
+    resources :opportunities, module: :clients do
+      resources :tasks, module: :clients
+    end
+    resources :tasks, module: :clients
   end
 
   resources :contacts
